@@ -3,6 +3,10 @@ import { useRouter } from 'next/router';
 import { supabase } from '../../../../utils/supabaseClient';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { Layout } from '@/Layout';
+import { format } from 'date-fns';
+import { FaCalendar, FaCoins, FaGamepad, FaMoneyBill } from 'react-icons/fa';
+import { BsFillPeopleFill } from 'react-icons/bs';
 
 function page() {
   const router = useRouter();
@@ -32,20 +36,84 @@ function page() {
 
   console.log(router.query);
 
+  const isFrontPage = false;
+
+  const timestamp = data && data.tilmelding;
+
+  const dateObject = new Date(timestamp);
+
+  console.log(format(dateObject, 'dd/MM HH:mm'));
+
   return (
-    <div>
-      {data && (
-        <>
-          <p>{data.eventNavn}</p>
-          <p>{data.beskrivelse}</p>
-          <Image
-            width={250}
-            height={250}
-            src={data.background_image}
-          />
-        </>
-      )}
-    </div>
+    <>
+      <Layout>
+        {data && (
+          <>
+            <header
+              style={{
+                backgroundImage: `linear-gradient(to bottom, transparent, rgba(24,23,28, 1) 90%), url(${data.background_image})`,
+              }}
+              className={`flex min-h-[50vh] justify-center bg-center bg-cover bg-no-repeat pb-10`}
+            >
+              <div className='w-full spacer max-w-main flex flex-col justify-end'>
+                <h1>{data.eventNavn}</h1>
+                <h2>{data.spil}</h2>
+                <div className='flex gap-4 align-middle'>
+                  <div className='bg-accentCol w-fit px-2 self-center rounded-full flex'>
+                    <p className='text-primaryCol mt-0 font-medium'>OPEN</p>
+                  </div>
+                  <h4 className='mt-0'>Tilmeldingsfrist D. {format(dateObject, 'dd/MM HH:mm')}</h4>
+                </div>
+              </div>
+            </header>
+            <section className='flex justify-center'>
+              <div className='spacer w-full flex-wrap flex justify-between'>
+                <div className='shrink-0 '>
+                  <div
+                    style={{
+                      gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+                    }}
+                    className='grid gap-3'
+                  >
+                    <div className='p-3 w-full flex flex-col gap-2 bg-contrastCol rounded-sm'>
+                      <p className='mt-0 flex gap-1 items-center align-middle font-bold uppercase'>
+                        <FaGamepad className='inline-block' /> Spil
+                      </p>
+                      <p className='mt-0'>{data.spil}</p>
+                    </div>
+                    <div className='p-3 w-full flex flex-col gap-2 bg-contrastCol rounded-sm'>
+                      <p className='mt-0 flex gap-1 items-center align-middle font-bold uppercase'>
+                        <FaCalendar size='12' />
+                        Dato
+                      </p>
+                      <p className='mt-0'>{format(new Date(data.dato), 'dd/MM HH:mm')}</p>
+                    </div>
+                    <div className='p-3 w-full flex flex-col gap-2 bg-contrastCol rounded-sm'>
+                      <p className='mt-0 flex gap-1 items-center align-middle font-bold uppercase'>
+                        <BsFillPeopleFill />
+                        Format
+                      </p>
+                      <p className='mt-0'>{data.format}</p>
+                    </div>
+                    <div className='p-3 w-full flex flex-col gap-2 bg-contrastCol rounded-sm'>
+                      <p className='mt-0 flex gap-1 items-center font-bold uppercase'>
+                        <FaCoins size='12' /> Tilmeldingspris
+                      </p>
+                      <p className='mt-0'>{data.gebyr}kr.</p>
+                    </div>
+                  </div>
+                  <p>{data.beskrivelse}</p>
+                </div>
+                <div></div>
+                <div>
+                  <h4>Sponsorer</h4>
+                </div>
+              </div>
+            </section>
+          </>
+        )}
+      </Layout>
+    </>
   );
 }
 
