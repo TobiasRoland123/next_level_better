@@ -16,7 +16,7 @@ function page() {
           .select('*')
           .eq('id', router.query.id);
         if (data) {
-          setData(data[0]); // Assuming you expect only one record
+          setData(data[0]);
         } else {
           console.error(error);
         }
