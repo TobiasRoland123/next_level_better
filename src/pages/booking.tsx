@@ -77,7 +77,10 @@ export default function Booking({ john }: { john: Bookings[] }) {
   }, [router.events]);
   useEffect(() => {
     if (bookingRef.current && userChoices?.startTime?.index !== undefined && userChoices?.amount && userChoices.date) {
-      bookingRef.current.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        //@ts-ignore
+        bookingRef.current.scrollIntoView({ behavior: 'smooth' });
+      }, 425);
       //console.log('1');
       //console.log(userChoices.startTime);
       //console.log(userChoices.endTime);
@@ -637,6 +640,18 @@ export default function Booking({ john }: { john: Bookings[] }) {
     }
   };
 
+  const timeChosenConstEnd = () => {
+    if (timeChosen.index !== undefined) {
+      if (timeChosen.index === 0) {
+        return <span className='font-bold text-accentCol'>Vælg et sluttidspunkt.</span>;
+      } else if (timeChosen.index === 12) {
+        return <span className='font-bold text-accentCol'>Du kan ikke starte klokken 20.00, så vælg en tid der er din start tid - din bandit :-) </span>;
+      } else if (timeChosen.index > 0) {
+        return <span className='font-bold text-accentCol'>Vælg entent et tidligere tidspunkt for at ændre din start tid, eller et senere tidspunkt for at vælge din sluttid.</span>;
+      }
+    }
+  };
+
   // const handleBookingChange = (statement: string, value: string) => {
   //   switch (statement) {
   //     case BookingTypes.FormName:
@@ -779,7 +794,7 @@ export default function Booking({ john }: { john: Bookings[] }) {
                         >
                           <p>
                             <span>Slut tid - </span>
-                            {timeChosen.time === '' && userChoices?.startTime?.index !== undefined ? <span className='font-bold text-accentCol'>{userChoices?.endTime?.time}</span> : <span className='font-bold text-accentCol'>Vælg et sluttidspunkt!</span>}
+                            {timeChosen.time === '' && userChoices?.startTime?.index !== undefined ? <span className='font-bold text-accentCol'>{userChoices?.endTime?.time}</span> : <>{timeChosenConstEnd()}</>}
                           </p>
                         </motion.article>
                       )}
@@ -870,7 +885,8 @@ export default function Booking({ john }: { john: Bookings[] }) {
                     transition={{
                       type: 'spring',
                       stiffness: 100,
-                      duration: 1,
+                      delay: 0.4,
+                      duration: 0.3,
                       ease: [0, 0.71, 0.2, 1.01],
                     }}
                   >
