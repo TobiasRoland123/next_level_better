@@ -20,8 +20,8 @@ function TurneringKort() {
           />
           <div className='aspect-video absolute flex flex-col w-full h-auto justify-between rounded p-2 bg-gradient-to-t from-primaryCol to-transparent z-10'>
             <div className='flex gap-2 justify-end'>
-              <div className='bg-white w-fit h-min px-2 rounded-full flex self-center uppercase'>
-                <small className='mt-0 text-primaryCol'>
+              <div className='bg-[#08ef8e] w-fit h-min px-2 rounded-full flex self-center uppercase'>
+                <small className='mt-0 text-primaryCol font-bold'>
                   Åben for tilmelding
                 </small>
               </div>

@@ -25,6 +25,7 @@ module.exports = {
         secondaryCol: 'hsl(var(--secondaryColor))',
         accentCol: 'hsl(var(--accentColor))',
         contrastCol: 'hsl(var(--contrastColor))',
+        openCol: 'hsl(var(--openCol))',
 
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
