@@ -44,8 +44,8 @@ export default function Spil() {
               <div className='spacer w-full'>
                 <h1 className='mt-20'>Admin Spil</h1>
                 <p>
-                  Her kan du administrere hvilke spil, som er til rådighed i jeres sortiment. Det er muligt at tilføje, redigere
-                  og fjerne spil.
+                  Her kan du administrere hvilke spil, som er til rådighed i jeres sortiment. Det er
+                  muligt at tilføje, redigere og fjerne spil.
                 </p>
               </div>
             </div>

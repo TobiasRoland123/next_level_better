@@ -5,10 +5,33 @@ import { Accordion } from '@radix-ui/react-accordion';
 import { Accordions } from '@/components/Accordion/Accordion';
 import { Button } from '@/components/Button/Button';
 import Head from 'next/head';
+import { supabase } from '../../../utils/supabaseClient';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { TurneringCards } from '../../components/Cards/TurneringCards';
+
+interface Turnering {
+  id: number;
+  dato: Date;
+  tilmelding: Date;
+  gebyr: number;
+  eventNavn: string;
+  background_image: string;
+  format: string;
+  spil: string;
+  premie: string;
+  beskrivelse: string;
+}
+
+const queryClient = new QueryClient();
+
+export const fetchDBTurneringData = async () => {
+  let { data, error } = await supabase.from('turneringer').select('*');
+  return data as Turnering[];
+};
 
 export default function Turneringer() {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <Head>
         <title>Spændende Gaming Turneringer hos Next Level Gaming: Vis Din Færdighed</title>
         <meta
@@ -37,7 +60,7 @@ export default function Turneringer() {
                 </h2>
                 <p className='mb-10'>Se de kommende turneringer nedenfor.</p>
 
-                <Accordions
+                {/*  <Accordions
                   items={[
                     {
                       item: {
@@ -78,7 +101,9 @@ export default function Turneringer() {
                       },
                     },
                   ]}
-                />
+                /> */}
+
+                <TurneringCards />
               </div>
             </article>
           </section>
@@ -96,6 +121,6 @@ export default function Turneringer() {
           </section>
         </main>
       </Layout>
-    </>
+    </QueryClientProvider>
   );
 }
