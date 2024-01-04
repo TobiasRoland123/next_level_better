@@ -80,6 +80,10 @@ small {
   text-align: center;
 }
 
+.bookingTable th {
+  padding-right: 0;
+}
+
 .calendarDatePickerMate {
   box-shadow: none;
 }

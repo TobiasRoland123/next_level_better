@@ -1,3 +1,4 @@
+import { ReactHTMLElement, ReactNode } from 'react';
 import { Layout } from '@/Layout';
 import { Hero } from '@/modules/Hero/Hero';
 import { Input } from '@/components/Inputfields/Inputfield';
@@ -291,7 +292,8 @@ export default function Booking({ john }: { john: Bookings[] }) {
         editBookedTimes(tid, index, BookingTypes.SetEndToTimeChosen);
       }
     }
-    // //console.log(timeChosen);
+    console.log('timeChosen', timeChosen);
+    console.log('userChoices', userChoices);
   }
 
   function editBookedTimes(tid: string, index: number, statement: string | undefined) {
@@ -625,6 +627,16 @@ export default function Booking({ john }: { john: Bookings[] }) {
     //console.log(alertDetail);
   }
 
+  const timeChosenConstStart = () => {
+    if (userChoices?.startTime?.index === undefined && timeChosen.time === '') {
+      return <span className='font-bold text-accentCol'>Du skal væle en start tid!</span>;
+    } else if (timeChosen.time !== '' && userChoices?.startTime?.index === undefined) {
+      return <span className='font-bold text-accentCol'>{timeChosen.time}</span>;
+    } else {
+      return <span className='font-bold text-accentCol'>{userChoices?.startTime?.time}</span>;
+    }
+  };
+
   // const handleBookingChange = (statement: string, value: string) => {
   //   switch (statement) {
   //     case BookingTypes.FormName:
@@ -747,38 +759,56 @@ export default function Booking({ john }: { john: Bookings[] }) {
                         Check Boking Date Times
                       </button> */}
                       </h4>
-                      <span className='font-bold'>Du kan booke ml. 14 - 20</span>
+                      <p>
+                        <span onClick={() => console.log(timeChosen, userChoices)}>Start tid - </span>
+                        {timeChosenConstStart()}
+                      </p>
+                      {timeChosen.time === '' && userChoices?.startTime?.index === undefined ? (
+                        ''
+                      ) : (
+                        <motion.article
+                          className='w-full'
+                          initial={{ opacity: 0, y: '-50%' }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{
+                            type: 'spring',
+                            stiffness: 100,
+                            duration: 0.3,
+                            ease: [0, 0.71, 0.2, 1.01],
+                          }}
+                        >
+                          <p>
+                            <span>Slut tid - </span>
+                            {timeChosen.time === '' && userChoices?.startTime?.index !== undefined ? <span className='font-bold text-accentCol'>{userChoices?.endTime?.time}</span> : <span className='font-bold text-accentCol'>Vælg et sluttidspunkt!</span>}
+                          </p>
+                        </motion.article>
+                      )}
                       <div className='mt-3'>
                         {userChoices?.startTime?.index === undefined || userChoices?.endTime?.time === undefined ? (
-                          <p>
-                            Vælg et tidsrum du vil spille i:
-                            <span>
-                              <b>{timeChosen.time}</b>
-                            </span>
-                          </p>
+                          ''
                         ) : (
-                          <p>
-                            Tidspunkt:
-                            <span>
-                              {' '}
-                              <b>{userChoices?.startTime?.time}</b>{' '}
-                            </span>{' '}
-                            -
-                            <span>
-                              {' '}
-                              <b>{userChoices?.endTime?.time}</b>{' '}
-                            </span>
-                            <span className='block mt-2'>
-                              Timer:
-                              <b>
+                          <motion.article
+                            className='w-full'
+                            initial={{ opacity: 0, y: '-50%' }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{
+                              type: 'spring',
+                              stiffness: 100,
+                              duration: 0.3,
+                              ease: [0, 0.71, 0.2, 1.01],
+                            }}
+                          >
+                            <p>
+                              Antal timer:
+                              <span className=' ml-1 font-bold text-accentCol'>
                                 {Math.abs(
                                   userChoices?.startTime?.index -
                                     // @ts-ignore
                                     userChoices?.endTime?.index
                                 ) / 2}
-                              </b>
-                            </span>
-                          </p>
+                              </span>
+                            </p>
+                          </motion.article>
                         )}
                       </div>
                       <div className=' timeslots flex gap-2 flex-wrap mt-3'>
@@ -833,13 +863,14 @@ export default function Booking({ john }: { john: Bookings[] }) {
                 {amountValue !== undefined && Number(amountValue) < 6 && Number(amountValue) > 0 && userChoices?.date !== undefined && userChoices?.startTime?.index !== undefined && userChoices.endTime?.index !== undefined ? (
                   <motion.article
                     id='personalInfo'
+                    ref={bookingRef}
                     className='w-full'
                     initial={{ opacity: 0, y: '-50%' }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{
                       type: 'spring',
                       stiffness: 100,
-                      duration: 0.3,
+                      duration: 1,
                       ease: [0, 0.71, 0.2, 1.01],
                     }}
                   >
