@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { fetchDBTurneringData } from '../../pages/events/turneringer';
 import Link from 'next/link';
+import { Card } from './Card';
 
 export const TurneringCards = () => {
   const { data, isLoading, error } = useQuery({
@@ -12,7 +13,9 @@ export const TurneringCards = () => {
 
   return (
     data &&
-    data.map(turnering => <Link href={`turnering/${turnering.id}`}>{turnering.eventNavn}</Link>)
+    data.map((turnering) => (
+      <Link href={`turnering/${turnering.id}`}>{turnering.eventNavn}</Link>
+    ))
   );
 };
 
