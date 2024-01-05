@@ -51,21 +51,25 @@ export default function OmOs() {
                 <div className=' mt-6 md:mt-0'>
                   <h3 className='mt-0'>find os her</h3>
                   <p>
-                    Vores <span className='italic'>base of operation</span> ligger i Glostrup. Her har vi skabt, hvad vi mener, er
-                    muligvis den bedste gamingoplevelse i Danmark. Vi har gæster i alle aldre, som spiller lige fra et par timer
-                    til hele natten. Vi har åbent når du har mest lyst til at game, og det har vi haft siden dag ét.
+                    Vores <span className='italic'>base of operation</span> ligger i Glostrup. Her
+                    har vi skabt, hvad vi mener, er muligvis den bedste gamingoplevelse i Danmark.
+                    Vi har gæster i alle aldre, som spiller lige fra et par timer til hele natten.
+                    Vi har åbent når du har mest lyst til at game, og det har vi haft siden dag ét.
                   </p>
 
                   <h4>Her kan du parkere</h4>
                   <ul className='flex flex-col pt-4 gap-4'>
                     <li>
-                      <span className='text-accentCol font-bold uppercase'>Rød zone</span> - Parkering forbudt
+                      <span className='text-accentCol font-bold uppercase'>Rød zone</span> -
+                      Parkering forbudt
                     </li>
                     <li>
-                      <span className='text-[#2096EB] font-bold uppercase'>Blå zone</span> - Parkering mod betaling via app
+                      <span className='text-[#2096EB] font-bold uppercase'>Blå zone</span> -
+                      Parkering mod betaling via app
                     </li>
                     <li>
-                      <span className='text-[#52FF00] font-bold uppercase'>grøn zone</span> - Gratis parkering
+                      <span className='text-[#52FF00] font-bold uppercase'>grøn zone</span> - Gratis
+                      parkering
                     </li>
                   </ul>
                   <div className='bg-contrastCol mt-8 p-4 hidden lg:block'>
@@ -215,9 +219,10 @@ export default function OmOs() {
                         Next level <span className='text-accentCol'>Vision</span>
                       </h2>
                       <p>
-                        Vores vision er et gaming center hvor der er plads til alle. Dette gælder også din personlighed. Vi har
-                        sørget for plads ved computerne, men også til sejre og nederlag. Vi har skabt det vi mener er de perfekte
-                        rammer for hvordan et gaming center skal være.
+                        Vores vision er et gaming center hvor der er plads til alle. Dette gælder
+                        også din personlighed. Vi har sørget for plads ved computerne, men også til
+                        sejre og nederlag. Vi har skabt det vi mener er de perfekte rammer for
+                        hvordan et gaming center skal være.
                       </p>
                     </div>
                     <div className='aspect-video col-start-1 md:col-start-1 lg:col-start-2'>
@@ -263,8 +268,8 @@ export default function OmOs() {
                         Sammenhold
                       </h3>
                       <p className='mt-2'>
-                        Hos Next Level står vi sammen. Vi går op i at alle er velkomne og siger “nej tak” til diskrimination både
-                        fysisk og online.
+                        Hos Next Level står vi sammen. Vi går op i at alle er velkomne og siger “nej
+                        tak” til diskrimination både fysisk og online.
                       </p>
                     </li>
                     <li className='text-center row-start-2 col-start-1 '>
@@ -289,8 +294,8 @@ export default function OmOs() {
                         afkobling
                       </h3>
                       <p className='mt-2'>
-                        Måske det lyder lidt modsigende, da gaming ofte går hedt for sig. Men vi har skabt et frirum for dem som
-                        mener at gaming kan være afslappende.
+                        Måske det lyder lidt modsigende, da gaming ofte går hedt for sig. Men vi har
+                        skabt et frirum for dem som mener at gaming kan være afslappende.
                       </p>
                     </li>
                     <li className='text-center row-start-2 col-start-3'>
@@ -315,8 +320,8 @@ export default function OmOs() {
                         Udstyr i top
                       </h3>
                       <p className='mt-2'>
-                        Lag er et fremmedord for os. Vi sørger for lav ‘ping’ og har det bedste udstyr på markedet, så du ikke
-                        bliver afbrudt af lagspikes eller
+                        Lag er et fremmedord for os. Vi sørger for lav ‘ping’ og har det bedste
+                        udstyr på markedet, så du ikke bliver afbrudt af lagspikes eller
                       </p>
                     </li>
                   </ul>
